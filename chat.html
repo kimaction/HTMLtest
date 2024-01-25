@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTS 자동 재생 예제</title>
+</head>
+<body>
+    <h1>TTS 자동 재생 예제</h1>
+
+    <p id="textToRead">음성으로 읽을 텍스트: 김코드</p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 페이지가 로드될 때 터치 이벤트를 유도하는 안내 메시지를 보여줌
+            alert("이 페이지에서 음성을 듣려면 화면을 터치하세요.");
+
+            // 사용자 상호 작용을 트리거하는 이벤트 리스너 등록
+            document.addEventListener("click", function() {
+                speakText();
+            });
+        });
+
+        function speakText() {
+            var textToRead = document.getElementById('textToRead').innerText;
+
+            // SpeechSynthesisUtterance 객체 생성
+            var utterance = new SpeechSynthesisUtterance(textToRead);
+
+            // iOS Safari에서는 SpeechSynthesis API를 사용하기보다는 iOS의 내장 음성 엔진을 사용
+            speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
